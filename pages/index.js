@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import axios from 'axios'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,4 +19,11 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+Home.getInitialProps = async () => {
+  const res = await axios.get("https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=London&aqi=no");
+  const {data} = res
+  console.log(data)
+  return{data: data}
 }
