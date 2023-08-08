@@ -5,7 +5,7 @@ import styles from "../styles/main.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({data}) {
   return (
     <>
       <Head>
@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <body className={styles.main}/>
       <main className={inter.className}>
-        <h1>weather app</h1>
+        <h1 className={styles.heading}>{data.location.name}</h1>
       </main>
     </>
   );
