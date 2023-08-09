@@ -14,7 +14,7 @@ export default function Home({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className={styles.main}/>
+      {/* <body className={styles.main}/> */}
       <main className={inter.className}>
         <h1 className={styles.heading}>{data.location.name}</h1>
       </main>
