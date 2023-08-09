@@ -1,5 +1,5 @@
 import Form from "./components/Form";
-import "../styles/main.module.css";
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }) {
   return (

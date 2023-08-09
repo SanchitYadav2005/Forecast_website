@@ -2,10 +2,11 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import axios from "axios";
 import styles from "../styles/main.module.css";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({data}) {
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -14,8 +15,11 @@ export default function Home({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className={inter.className}>
-        <h1 className={styles.heading}>{data.location.name}</h1>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <h1 className={styles.heading}>{data.location.name}</h1>
+        </motion.div>
       </main>
     </>
   );
