@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import axios from "axios";
 import styles from "../styles/main.module.css";
-import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +16,7 @@ export default function Home({ data }) {
       </Head>
 
       <main className={inter.className}>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <h1 className={styles.heading}>{data.location.name}</h1>
-        </motion.div>
       </main>
     </>
   );
