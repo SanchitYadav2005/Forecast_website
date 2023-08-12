@@ -1,12 +1,13 @@
-import styles from '/styles/main.module.css';
-import { useState } from 'react';
+import styles from "/styles/main.module.css";
+import useInputState from "../hooks/useInputState";
 
-function Form(){
-    return(
-        <>
-            <input className={styles.search} type="text" placeholder="search"/>
-        </>
-    )
+function Form() {
+  
+  return (
+    <>
+      
+    </>
+  );
 }
 
 export default Form;

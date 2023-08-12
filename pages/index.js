@@ -1,11 +1,13 @@
 import Head from "next/head";
 import axios from "axios";
 import styles from "../styles/main.module.css";
-import Form from "./components/Form";
+import useInputState from "./hooks/useInputState";
 
-const assinged = "London";
+let assinged = "Delhi";
+let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`
 
-export default function Home({ data }) {
+function Home({ data }) {
+  const [value, handleChange, reset] = useInputState("");
   return (
     <>
       <Head>
@@ -16,19 +18,37 @@ export default function Home({ data }) {
       </Head>
 
       <main>
-          <nav>
-            <h1>{data.location.name}</h1>
-            <Form/>
-          </nav>
+        <nav>
+        <form 
+        onSubmit={e=>{
+            e.preventDefault();
+            reset();
+        }}
+      >
+      <input
+        className={styles.search}
+        type="text"
+        placeholder="search"
+        onChange={handleChange}
+        value={value}
+        
+      />
+      </form>
+          <h1>{data.location.name}</h1>
+        </nav>
+        <h2>{data.current.temp_c}</h2>
+        <h3>{data.current.condition.text}</h3>
+        <img src={data.current.condition.icon}/>
       </main>
     </>
   );
 }
 
 Home.getInitialProps = async () => {
-  const res = await axios.get(
-    `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`
-  );
+  const res = await axios.get(_api);
   const { data } = res;
   return { data: data };
 };
+
+
+export default Home;
