@@ -1,0 +1,7 @@
+input.search {
+    width: 260px;
+    border: 1px solid #555;
+    display: block;
+    padding: 9px 4px 9px 40px;
+    background: transparent url("./search.svg") no-repeat 13px;
+}

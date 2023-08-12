@@ -1,10 +1,10 @@
-import search from '/assests/search.png'
+import styles from '/styles/main.module.css';
+import { useState } from 'react';
 
 function Form(){
     return(
         <>
-            <img src='https://pics.freeicons.io/uploads/icons/png/167795051016312728974145-512.png'/>
-            <input type="text" placeholder="search"/>
+            <input className={styles.search} type="text" placeholder="search"/>
         </>
     )
 }

@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import axios from "axios";
 import styles from "../styles/main.module.css";
+import Form from "./components/Form";
 
-const inter = Inter({ subsets: ["latin"] });
+const assinged = "London";
 
 export default function Home({ data }) {
   return (
@@ -15,8 +15,11 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={inter.className}>
-          <h1 className={styles.heading}>{data.location.name}</h1>
+      <main>
+          <nav>
+            <h1>{data.location.name}</h1>
+            <Form/>
+          </nav>
       </main>
     </>
   );
@@ -24,7 +27,7 @@ export default function Home({ data }) {
 
 Home.getInitialProps = async () => {
   const res = await axios.get(
-    "https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=London&aqi=no"
+    `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`
   );
   const { data } = res;
   return { data: data };
