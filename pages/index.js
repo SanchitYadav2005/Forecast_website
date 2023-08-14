@@ -17,8 +17,9 @@ function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <nav>
+      <main className={styles.main}>
+        <nav className={styles.navbar}>
+        <h1 className={styles.heading}>{data.location.name}</h1>
         <form 
         onSubmit={e=>{
             e.preventDefault();
@@ -34,11 +35,11 @@ function Home({ data }) {
         
       />
       </form>
-          <h1>{data.location.name}</h1>
+          
         </nav>
-        <h2>{data.current.temp_c}</h2>
-        <h3>{data.current.condition.text}</h3>
-        <img src={data.current.condition.icon}/>
+        <h2 className={styles.temp}>{data.current.temp_c}</h2>
+        <h3 className={styles.condition}>{data.current.condition.text}</h3>
+        <img className={styles.icon} src={data.current.condition.icon}/>
       </main>
     </>
   );
