@@ -39,7 +39,7 @@ function Home({ data }) {
         <motion.div className={styles.card}>
           <img className={styles.icon} src={data.current.condition.icon} />
           <h3 className={styles.condition}>{data.current.condition.text}</h3>
-          <h2 className={styles.temp}>{data.current.temp_c}</h2>
+          <h2 className={styles.temp}>{data.current.temp_c} <sup>°</sup>C</h2>
         </motion.div>
       </main>
     </>
