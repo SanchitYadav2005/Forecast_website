@@ -1,7 +1,24 @@
 input.search {
     width: 260px;
-    border: 1px solid #555;
+    border: 1px solid #f1faee;
+    border-radius: 10px;
     display: block;
     padding: 9px 4px 9px 40px;
-    background: transparent url("./search.svg") no-repeat 13px;
+    background: url("./search.svg") no-repeat 13px;
+    background-color: #f1faee;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+    cursor: pointer;
+}
+.search:focus{
+    outline: none;
+    width: 80%;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #bde0fe;
+    padding: 0.1em 3em 0.1em 3em;
+    border-radius: 5px;
 }
