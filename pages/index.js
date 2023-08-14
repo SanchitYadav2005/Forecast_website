@@ -40,6 +40,9 @@ function Home({ data }) {
           <img className={styles.icon} src={data.current.condition.icon} />
           <h3 className={styles.condition}>{data.current.condition.text}</h3>
           <h2 className={styles.temp}>{data.current.temp_c} <sup>°</sup>C</h2>
+          <h4 className={styles.temp}>Humidity - {data.current.humidity}</h4>
+          <h4 className={styles.temp}>Wind - {data.current.wind_kph} kph</h4>
+          <h4 className={styles.cloud}>Clouds - {data.current.cloud}%</h4>
         </motion.div>
       </main>
     </>
