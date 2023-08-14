@@ -2,9 +2,10 @@ import Head from "next/head";
 import axios from "axios";
 import styles from "../styles/main.module.css";
 import useInputState from "./hooks/useInputState";
+import { motion } from "framer-motion";
 
-let assinged = "Delhi";
-let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`
+let assinged = "London";
+let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`;
 
 function Home({ data }) {
   const [value, handleChange, reset] = useInputState("");
@@ -19,27 +20,27 @@ function Home({ data }) {
 
       <main className={styles.main}>
         <nav className={styles.navbar}>
-        <h1 className={styles.heading}>{data.location.name}</h1>
-        <form 
-        onSubmit={e=>{
-            e.preventDefault();
-            reset();
-        }}
-      >
-      <input
-        className={styles.search}
-        type="text"
-        placeholder="search"
-        onChange={handleChange}
-        value={value}
-        
-      />
-      </form>
-          
+          <h1 className={styles.heading}>{data.location.name}</h1>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              reset();
+            }}
+          >
+            <input
+              className={styles.search}
+              type="text"
+              placeholder="search"
+              onChange={handleChange}
+              value={value}
+            />
+          </form>
         </nav>
-        <h2 className={styles.temp}>{data.current.temp_c}</h2>
-        <h3 className={styles.condition}>{data.current.condition.text}</h3>
-        <img className={styles.icon} src={data.current.condition.icon}/>
+        <motion.div className={styles.card}>
+          <img className={styles.icon} src={data.current.condition.icon} />
+          <h3 className={styles.condition}>{data.current.condition.text}</h3>
+          <h2 className={styles.temp}>{data.current.temp_c}</h2>
+        </motion.div>
       </main>
     </>
   );
@@ -50,6 +51,5 @@ Home.getInitialProps = async () => {
   const { data } = res;
   return { data: data };
 };
-
 
 export default Home;
