@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 import axios from "axios";
 import styles from "../styles/main.module.css";
 import useInputState from "./hooks/useInputState";
@@ -8,7 +9,14 @@ let assinged = "London";
 let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`;
 
 function Home({ data }) {
-  const [value, handleChange, reset] = useInputState("");
+  // const [value, handleChange, reset] = useInputState("");
+  const [value, setValue] = useState("");
+  const handleChange = (e) =>{
+    setValue(e.target.value);
+  }
+  const reset = () =>{
+    setValue("");
+  }
   return (
     <>
       <Head>
@@ -34,6 +42,7 @@ function Home({ data }) {
               onChange={handleChange}
               value={value}
             />
+            
           </form>
         </nav>
         <motion.div className={styles.card}>
