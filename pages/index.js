@@ -9,6 +9,13 @@ let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600
 
 function Home({ data }) {
   const [value, handleChange, reset] = useInputState("");
+  const location = data.location.name;
+  const conditionIcon = data.current.condition.icon;
+  const conditionText = data.current.condition.text;
+  const temp = data.current.temp_c;
+  const humidity = data.current.humidity;
+  const wind = data.current.wind_kph;
+  const clouds = data.current.cloud;
   return (
     <>
       <Head>
@@ -20,7 +27,7 @@ function Home({ data }) {
 
       <main className={styles.main}>
         <nav className={styles.navbar}>
-          <h1 className={styles.heading}>{data.location.name}</h1>
+          <h1 className={styles.heading}>{location}</h1>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -37,12 +44,12 @@ function Home({ data }) {
           </form>
         </nav>
         <motion.div className={styles.card}>
-          <img className={styles.icon} src={data.current.condition.icon} />
-          <h3 className={styles.condition}>{data.current.condition.text}</h3>
-          <h2 className={styles.temp}>{data.current.temp_c} <sup>°</sup>C</h2>
-          <h4 className={styles.temp}>Humidity - {data.current.humidity}</h4>
-          <h4 className={styles.temp}>Wind - {data.current.wind_kph} kph</h4>
-          <h4 className={styles.cloud}>Clouds - {data.current.cloud}%</h4>
+          <img className={styles.icon} src={conditionIcon} />
+          <h3 className={styles.condition}>{conditionText}</h3>
+          <h2 className={styles.temp}>{temp} <sup>°</sup>C</h2>
+          <h4 className={styles.temp}>Humidity - {humidity}</h4>
+          <h4 className={styles.temp}>Wind - {wind} kph</h4>
+          <h4 className={styles.cloud}>Clouds - {clouds}%</h4>
         </motion.div>
       </main>
     </>
