@@ -7,7 +7,8 @@ input.search {
   border-radius: 10px;
   display: block;
   padding: 9px 4px 9px 40px;
-  background: url("./search.svg") no-repeat 13px;
+  background: url("./icons8-search.gif") no-repeat 5px;
+  background-size: 20px;
   background-color: #ffffff;
     width: 75%;
 }
@@ -67,17 +68,10 @@ input.search {
 }
 
 @media (min-width: 320px) and (max-width: 480px){
-    /* .navbar{
+    .navbar{
         display: flex;
         flex-direction: column-reverse;
         padding-top: 1.5em;
-    } */
-    input.search{
-        width: 0%;
-        margin-left: 1em;
-        transition: width 0.4s ease-in-out;
     }
-    .search:focus{
-        width: 75%;
-    }
+   
 }

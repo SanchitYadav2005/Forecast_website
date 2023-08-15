@@ -41,7 +41,6 @@ function Home({ data }) {
               onChange={handleChange}
               value={value}
             />
-            
           </form>
         </nav>
         <motion.div className={styles.card}>
