@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Tilt+Prism&display=swap");
 
+.title{
+    font-family: "Tilt Prism", cursive;
+}
 input.search {
   width: 260px;
   border: 1px solid #f1faee;
