@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import styles from "../styles/main.module.css";
-import useInputState from "./hooks/useInputState";
 import { motion } from "framer-motion";
 
 let assinged = "London";
