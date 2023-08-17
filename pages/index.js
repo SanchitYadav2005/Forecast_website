@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../styles/main.module.css";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600
 
 function Home({ data }) {
   // const [value, handleChange, reset] = useInputState("");
-  const [value, setValue] = useState("");
+  let [value, setValue] = useState("");
   const handleChange = (e) =>{
     setValue(e.target.value);
   }
