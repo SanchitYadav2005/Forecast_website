@@ -1,13 +1,22 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 import styles from "../styles/main.module.css";
 import { motion } from "framer-motion";
 
-let assinged = "London";
-let _api = `https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${assinged}&aqi=no`;
 
-function Home({ data }) {
+
+
+let assinged = "London";
+let _api = ``;
+
+async function Home() {
+  async function getData(){
+    const res = await axios.get(`https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${value}&aqi=no`)
+    const {data} = res;
+    return data;
+  }
+  const data = await getData();
   // const [value, handleChange, reset] = useInputState("");
   let [value, setValue] = useState("");
   const handleChange = (e) =>{
@@ -17,6 +26,7 @@ function Home({ data }) {
     setValue("");
   }
   return (
+
     <>
       <Head>
         <title className={styles.title}>Weather Gathering</title>
@@ -56,10 +66,5 @@ function Home({ data }) {
   );
 }
 
-Home.getInitialProps = async () => {
-  const res = await axios.get(_api);
-  const { data } = res;
-  return { data: data };
-};
 
 export default Home;
