@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-export default  useInputHook = initialVal => {
+export default initialVal => {
     const [value, setValue] = useState(initialVal);
-    const handleChange = () => {
-        setValue(value);
+    const handleChange = (event) => {
+        setValue(event.target.value);
     }
     const reset = () => {
         setValue("");
