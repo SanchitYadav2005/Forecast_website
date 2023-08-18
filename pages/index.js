@@ -5,18 +5,7 @@ import styles from "../styles/main.module.css";
 import { motion } from "framer-motion";
 
 
-
-
-let assinged = "London";
-let _api = ``;
-
-async function Home() {
-  async function getData(){
-    const res = await axios.get(`https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=${value}&aqi=no`)
-    const {data} = res;
-    return data;
-  }
-  const data = await getData();
+function Home({data}) {
   // const [value, handleChange, reset] = useInputState("");
   let [value, setValue] = useState("");
   const handleChange = (e) =>{
@@ -65,6 +54,10 @@ async function Home() {
     </>
   );
 }
-
+Home.getInitialProps = async () => {
+  const res = await axios.get("https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=London&aqi=no");
+  const {data} = res
+  return{data: data}
+}
 
 export default Home;
