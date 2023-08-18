@@ -1,19 +1,27 @@
 import Head from "next/head";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import styles from "../styles/main.module.css";
 import { motion } from "framer-motion";
 
 
-function Home({data}) {
+function Home() {
+
   // const [value, handleChange, reset] = useInputState("");
   let [value, setValue] = useState("");
+  const [data, setData] = useState("");
   const handleChange = (e) =>{
     setValue(e.target.value);
   }
   const reset = () =>{
     setValue("");
   }
+
+  useEffect(async ()=>{
+    const res = await axios.get(`https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=Mathura&aqi=no`);
+    setData(res.data)
+  })
+  
   return (
 
     <>
@@ -52,12 +60,13 @@ function Home({data}) {
         </motion.div>
       </main>
     </>
+    
   );
 }
-Home.getInitialProps = async () => {
-  const res = await axios.get("https://api.weatherapi.com/v1/current.json?key=67ca48d558fa4143a9600726230708&q=London&aqi=no");
-  const {data} = res
-  return{data: data}
-}
+// Home.getInitialProps = async () => {
+//   const res = await axios.get(``);
+//   const {data} = res
+//   return{data: data}
+// }
 
 export default Home;
