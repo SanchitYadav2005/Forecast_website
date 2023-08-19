@@ -4,16 +4,27 @@ import "./main.css";
 import { useState} from "react";
 
 function Main() {
+  const[lat, setLat] = useState([]);
+  const[long, setLong] = useState([]);
   const[query, setQuery] = useState([]);
   const[value,handleChange,reset] = useInputHook("");
-  const apiKey = "4990e2be0dec0c8e71f7e52dd733e707"
+  const apiKey = "7b38de6a6fa08f51ab08ef36085004d5"
   const getData = async () =>{
     const res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&appid=${apiKey}`);
     setQuery(res.data);
-    const a = query.map(p=>(
-      console.log(p.lat)
+    query.map(p=>(
+      setLat(p.lat)
     ))
-    console.log(a)
+    query.map(p => (
+      setLong(p.lon)
+    ))
+    console.log(lat)
+    console.log(long)
+  }
+
+  const getTemp = async () => {
+    const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`);
+    console.log(res.data);
   }
   return (
     <>
@@ -21,7 +32,8 @@ function Main() {
         onSubmit={(event) => {
           event.preventDefault();
           reset();
-          getData();
+          getData()
+          getTemp();
         }}
       >
         <input
