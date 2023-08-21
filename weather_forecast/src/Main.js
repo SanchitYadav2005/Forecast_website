@@ -1,7 +1,7 @@
 import axios from "axios";
 import useInputHook from "./hooks/useInputHook";
 import "./main.css";
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import Weather from "./Weather";
 
 function Main() {
@@ -11,7 +11,24 @@ function Main() {
   const[query, setQuery] = useState([]);
   const[data, setData] = useState([]);
   const[value,handleChange,reset] = useInputHook("");
-  const apiKey = "7b38de6a6fa08f51ab08ef36085004d5"
+  const apiKey = "7b38de6a6fa08f51ab08ef36085004d5";
+
+  useEffect(()=>{
+    
+    const getData = async () => {
+      const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&appid=${apiKey}`);
+      setQuery(response.data);
+      query.map(q=>(
+        setLat(q.lat)
+      ))
+      query.map(q=>(
+        setLong(q.lon)
+      ))
+      const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`);
+      setData(res.data);
+    }
+    getData();
+  },[lat,long,value,query]);
 
   // const getData = async () =>{
   //   const res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&appid=${apiKey}`);
@@ -46,7 +63,7 @@ function Main() {
           className="search"
           placeholder="Search"
         />
-        <button onClick={getData}>Click</button>
+        <button>Click</button>
       </form>
       <Weather weatherData={data}/>
     </>
