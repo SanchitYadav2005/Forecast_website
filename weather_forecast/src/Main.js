@@ -31,7 +31,7 @@ function Main() {
       console.log(data)
     }
     getData();
-  },[lat,long,query,data]);
+  },[lat,long,data,query,value]);
 
   // const getData = async () =>{
   //   const res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&appid=${apiKey}`);
