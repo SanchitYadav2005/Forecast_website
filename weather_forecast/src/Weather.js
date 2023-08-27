@@ -1,6 +1,6 @@
 function Weather({weatherData}){
     return(
-        <h1>{weatherData.name}</h1>
+        <h1>{weatherData.location.name}</h1>
     )
 }
 
