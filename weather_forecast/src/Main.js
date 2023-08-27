@@ -4,7 +4,7 @@ import "./main.css";
 import { useEffect, useState} from "react";
 import Weather from "./Weather";
 
-function Main() {
+const Main = () =>{
 
   const[lat, setLat] = useState([]);
   const[long, setLong] = useState([]);
@@ -31,32 +31,14 @@ function Main() {
       console.log(data)
     }
     getData();
-  },[lat,long,data,query,value]);
-
-  // const getData = async () =>{
-  //   const res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&appid=${apiKey}`);
-  //   setQuery(res.data);
-  //   console.log(query)
-  //   query.map(p=>(
-  //     setLat(p.lat)
-  //   ))
-  //   query.map(p => (
-  //     setLong(p.lon)
-  //   ))
-  //   getTemp();
-  // }
-
-  // const getTemp = async () => {
-  //   const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`);
-  //   setData(res.data)
-  //   console.log(data)
-  // }
+  });
   return (
     <>
       <form
         onSubmit={(event) => {
           event.preventDefault();
           reset();
+
         }}
       >
         <input
