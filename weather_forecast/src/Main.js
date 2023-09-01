@@ -5,23 +5,25 @@ import { useState } from "react";
 import Weather from "./Weather";
 
 const Main = () => {
-  
   const [data, setData] = useState([]);
   const [value, handleChange, reset] = useInputHook("");
-  const apiKey = "67ca48d558fa4143a9600726230708"
+  const apiKey = "67ca48d558fa4143a9600726230708";
 
   const handleClick = async () => {
-    const res = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}&aqi=no`)
-   setData(res.data)
+    const res = await axios.get(
+      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}&aqi=no`
+    );
+    setData(res.data);
+    console.log(data)
   };
-  if(data){
-    return(
-      <>
-       <form
+
+  return (
+    <>
+      <form
         onSubmit={(event) => {
           event.preventDefault();
           reset();
-          handleClick()
+          handleClick();
         }}
       >
         <input
@@ -33,14 +35,9 @@ const Main = () => {
         />
         <button>Click</button>
       </form>
-        <Weather weatherData={data}/>
-      </>
-    )
-  }else{
-    return(
-      <h2>no data found click again</h2>
-    )
-  }
+      <Weather weatherData={data} />
+    </>
+  );
 };
 
 export default Main;
