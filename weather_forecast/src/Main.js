@@ -3,6 +3,7 @@ import useInputHook from "./hooks/useInputHook";
 import "./main.css";
 import { useState } from "react";
 import Weather from "./Weather";
+import { motion } from "framer-motion";
 
 const Main = () => {
   const [data, setData] = useState([]);
@@ -14,11 +15,15 @@ const Main = () => {
       `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}&aqi=no`
     );
     setData(res.data);
-    console.log(data)
+    console.log(data);
   };
 
   return (
-    <>
+    <motion.div 
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    >
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -36,7 +41,7 @@ const Main = () => {
         <button>Click</button>
       </form>
       <Weather weatherData={data} />
-    </>
+    </motion.div>
   );
 };
 
