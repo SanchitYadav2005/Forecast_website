@@ -15,8 +15,6 @@ const Main = () => {
       `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}&aqi=no`
     );
     setData(res.data);
-    console.log(data);
-
   };
 
   return(
@@ -31,6 +29,7 @@ const Main = () => {
           reset();
           handleClick();
         }}
+        className="navbar"
       >
         <input
           value={value}
@@ -39,11 +38,16 @@ const Main = () => {
           className="search"
           placeholder="Search"
         />
-        <button>Click</button>
+        <button className="btn">Click</button>
       </form>
+      
       <div>
       {(typeof data != "undefined")?(
+        <>
+        <h1>{data.location.name}</h1>
         <Weather weatherData={data}/>
+        </>
+        
       ): (
         <div></div>
       )}
