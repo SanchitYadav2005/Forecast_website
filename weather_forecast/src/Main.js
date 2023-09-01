@@ -42,10 +42,10 @@ const Main = () => {
       </form>
       
       <div>
-      {(typeof data !== "undefined")?(
+      {(typeof data.main != "undefined")?(
         <Weather weatherData={data}/>
       ): (
-        <div></div>
+        <div></div> 
       )}
       </div>
 
