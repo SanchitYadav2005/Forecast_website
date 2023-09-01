@@ -38,16 +38,12 @@ const Main = () => {
           className="search"
           placeholder="Search"
         />
-        <button className="btn">Click</button>
+        <button className="btn"><img src="https://cdn-icons-png.flaticon.com/128/149/149852.png"/></button>
       </form>
       
       <div>
-      {(typeof data != "undefined")?(
-        <>
-        <h1>{data.location.name}</h1>
+      {(typeof data !== "undefined")?(
         <Weather weatherData={data}/>
-        </>
-        
       ): (
         <div></div>
       )}

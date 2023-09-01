@@ -1,6 +1,9 @@
+import './main.css';
+
 function Weather({weatherData}){
     return(
         <div className="card">
+            <h1 className='card-heading'>{weatherData.location.name}</h1>
             <div className="card-img">
                 <img src={weatherData.current.condition.icon}/>
             </div>
