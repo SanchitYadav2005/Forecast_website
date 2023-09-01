@@ -16,9 +16,10 @@ const Main = () => {
     );
     setData(res.data);
     console.log(data);
+
   };
 
-  return (
+  return(
     <motion.div 
     initial={{ opacity: 0, scale: 0.5 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -40,9 +41,17 @@ const Main = () => {
         />
         <button>Click</button>
       </form>
-      <Weather weatherData={data} />
-    </motion.div>
-  );
+      <div>
+      {(typeof data != "undefined")?(
+        <Weather weatherData={data}/>
+      ): (
+        <div></div>
+      )}
+      </div>
+
+      </motion.div>
+  )
+
 };
 
 export default Main;
