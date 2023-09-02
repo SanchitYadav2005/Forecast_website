@@ -5,7 +5,7 @@ function Weather({weatherData}){
         <div className="card">
             <h1 className='card-heading'>{weatherData.location.name}</h1>
             <div className="card-img">
-                <img src={weatherData.current.condition.icon}/>
+                <img src={weatherData.current.condition.icon} alt={weatherData.current.condition.text}/>
             </div>
             <p className="weather-detail">{weatherData.current.condition.text}</p>
             <p className="weather-detail">Temprature in °C:- {weatherData.current.temp_c}</p>
